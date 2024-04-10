@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
     ];
@@ -40,6 +40,8 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
+
+    public $timestamps=false;
 
     /**
      * The accessors to append to the model's array form.
