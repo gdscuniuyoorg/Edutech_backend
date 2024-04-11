@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller
+class LoginController extends Controller
 {
     function login(Request $req)
     {
@@ -43,17 +42,5 @@ class UserController extends Controller
             'message' => 'Invalid email or password.',
         ], 401);
     }
-
-    function logout(Request $req)
-    {
-        $user = auth()->user();
-        $user->token()->revoke(); // Revoke the user's token
-
-        auth()->logout();
-        return response()->json([
-            'message' => 'Successfully logged out!',
-        ], 200);
-    }
-
 
 }
